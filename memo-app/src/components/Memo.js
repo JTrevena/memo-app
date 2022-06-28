@@ -7,11 +7,18 @@ export default function Memo(props) {
     <div className="memo-tile-wrapper">
       <div className={`memo-tile-${id}`}>
         <form>
-          <text>This is a test tile</text>
-          <br />
-          <text>This tile's id is "{id}"</text>
-          <br />
-          <text>This tile's title is "{title}"</text>
+          <input
+            className={`title-input-${id}`}
+            type="text"
+            placeholder="Memo Title"
+            defaultValue={title ? title : ""}
+          ></input>
+          <input
+            className={`body-input-${id}`}
+            type="text"
+            placeholder="notes..."
+            defaultValue={body ? body : ""}
+          ></input>
         </form>
       </div>
     </div>

@@ -1,12 +1,12 @@
 import "./Memo.css";
 import { updateMemo, deleteMemo } from "../networking";
 import { useState } from "react";
-const CHAR_WARNING_THRESHOLD = 15;
-const MAX_CHARS_BODY = 140;
+export const CHAR_WARNING_THRESHOLD = 15;
+export const MAX_CHARS_BODY = 140;
 const MAX_CHARS_TITLE = 40;
 const POPUP_TIMEOUT = 1750;
 
-export default function Memo(props) {
+export function Memo(props) {
   const { id, title, body } = props.memoData;
   const [numCharsUsed, setNumCharsUsed] = useState(body.length);
   const [showCharWarning, setShowCharWarning] = useState(MAX_CHARS_BODY - numCharsUsed <= CHAR_WARNING_THRESHOLD);

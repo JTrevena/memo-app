@@ -1,6 +1,6 @@
 import "./App.css";
 import React, { useEffect, useState } from "react";
-import Memo from "./components/Memo.js";
+import { Memo } from "./components/Memo.js";
 import NewMemoBtn from "./components/NewMemoBtn";
 import SortBtn from "./components/SortBtn";
 

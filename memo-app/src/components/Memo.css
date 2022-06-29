@@ -17,6 +17,12 @@
   justify-content: flex-end;
 }
 
+.char-limit-warning {
+  font-size: x-small;
+  align-self: right;
+  color: red;
+}
+
 textarea {
   outline: none;
   padding: none;

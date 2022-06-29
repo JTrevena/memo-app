@@ -1,9 +1,13 @@
 import "./Memo.css";
 import { updateMemo, deleteMemo } from "../networking";
 import { useState } from "react";
+const CHAR_WARNING_THRESHOLD = 15;
+const MAX_CHARS_BODY = 140;
 
 export default function Memo(props) {
-  const { id, created_date, title, body } = props.memoData;
+  const { id, title, body } = props.memoData;
+  const [numCharsUsed, setNumCharsUsed] = useState(body.length);
+  const [showCharWarning, setShowCharWarning] = useState(MAX_CHARS_BODY - numCharsUsed <= CHAR_WARNING_THRESHOLD);
   const [showDelete, setShowDelete] = useState(false);
 
   function updateLocalMemoData(section, text) {
@@ -88,11 +92,21 @@ export default function Memo(props) {
           className="body-input"
           id={`body-input-${id}`}
           type="textarea"
-          maxLength={140}
+          maxLength={MAX_CHARS_BODY}
           placeholder="notes..."
           defaultValue={body ? body : ""}
+          onChange={e => {
+            const charsUsed = e.target.value.length;
+            setNumCharsUsed(charsUsed);
+            setShowCharWarning(MAX_CHARS_BODY - charsUsed <= CHAR_WARNING_THRESHOLD);
+          }}
           onBlur={handleUpdateMemo}
         ></textarea>
+        {showCharWarning && (
+          <span className="char-limit-warning">
+            {numCharsUsed} / {MAX_CHARS_BODY}
+          </span>
+        )}
         {showDelete && (
           <button className="delete-btn" id={`delete-btn-${id}`} onClick={handleDeleteMemo}>
             Delete Memo...

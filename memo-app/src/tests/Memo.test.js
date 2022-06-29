@@ -1,5 +1,12 @@
 import { render, screen, fireEvent, cleanup } from "@testing-library/react";
-import { Memo, CHAR_WARNING_THRESHOLD, MAX_CHARS_BODY } from "../components/Memo";
+import {
+  Memo,
+  CHAR_WARNING_THRESHOLD,
+  MAX_CHARS_BODY,
+  TITLE_PLACEHOLDER_TEXT,
+  BODY_PLACEHOLDER_TEXT,
+  DELETE_BUTTON_TEXT,
+} from "../components/Memo";
 
 afterEach(cleanup);
 
@@ -13,8 +20,8 @@ const mockSetMemoDataArr = arr => arr;
 
 test("A memo with blank fields will display placeholder text", () => {
   render(<Memo memoDataArr={mockMemoDataArr} setMemoDataArr={mockSetMemoDataArr} memoData={mockMemoDataB} />);
-  const placeholderTitle = screen.getByPlaceholderText("Memo Title");
-  const placeholderBody = screen.getByPlaceholderText("notes...");
+  const placeholderTitle = screen.getByPlaceholderText(TITLE_PLACEHOLDER_TEXT);
+  const placeholderBody = screen.getByPlaceholderText(BODY_PLACEHOLDER_TEXT);
 
   expect(placeholderTitle).toBeVisible();
   expect(placeholderBody).toBeVisible();
@@ -29,7 +36,17 @@ test("A memo will render text passed in through the memoData prop", () => {
   expect(mockBody).toBeVisible();
 });
 
-test("A memo's delete button will only display when the memo is hovered over", () => {});
+test("A memo's delete button will only display when the memo is hovered over", () => {
+  render(<Memo memoDataArr={mockMemoDataArr} setMemoDataArr={mockSetMemoDataArr} memoData={mockMemoDataA} />);
+  const memo = screen.getByTestId(`memo-tile-${mockMemoDataA.id}`);
+
+  fireEvent.mouseEnter(memo);
+  const deleteBtn = screen.getByText(DELETE_BUTTON_TEXT);
+  expect(deleteBtn).toBeVisible();
+
+  fireEvent.mouseLeave(memo);
+  expect(deleteBtn).not.toBeVisible();
+});
 
 test("A character count warning is displayed when the body text approaches the limit", () => {});
 

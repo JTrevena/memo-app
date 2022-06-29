@@ -1,6 +1,9 @@
 import "./Memo.css";
 import { updateMemo, deleteMemo } from "../networking";
 import { useState } from "react";
+export const TITLE_PLACEHOLDER_TEXT = "Memo Title";
+export const BODY_PLACEHOLDER_TEXT = "notes...";
+export const DELETE_BUTTON_TEXT = "Delete Memo...";
 export const CHAR_WARNING_THRESHOLD = 15;
 export const MAX_CHARS_BODY = 140;
 const MAX_CHARS_TITLE = 40;
@@ -81,6 +84,7 @@ export function Memo(props) {
   return (
     <div
       id={`memo-tile-${id}`}
+      data-testid={`memo-tile-${id}`}
       className="memo-tile-wrapper"
       onMouseEnter={handleShowDeleteBtn}
       onMouseLeave={handleHideDeleteBtn}
@@ -90,7 +94,7 @@ export function Memo(props) {
           className="title-input"
           id={`title-input-${id}`}
           maxLength={MAX_CHARS_TITLE}
-          placeholder="Memo Title"
+          placeholder={TITLE_PLACEHOLDER_TEXT}
           defaultValue={title ? title : ""}
           onBlur={handleUpdateMemo}
         ></textarea>
@@ -98,7 +102,7 @@ export function Memo(props) {
           className="body-input"
           id={`body-input-${id}`}
           maxLength={MAX_CHARS_BODY}
-          placeholder="notes..."
+          placeholder={BODY_PLACEHOLDER_TEXT}
           defaultValue={body ? body : ""}
           onChange={e => {
             const charsUsed = e.target.value.length;
@@ -114,7 +118,7 @@ export function Memo(props) {
         )}
         {showDelete && (
           <button className="delete-btn" id={`delete-btn-${id}`} onClick={handleDeleteMemo}>
-            Delete Memo...
+            {DELETE_BUTTON_TEXT}
           </button>
         )}
       </div>

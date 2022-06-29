@@ -5,13 +5,15 @@ export default function SortBtn(props) {
 
   function handleSortByTitle() {
     const copyArr = [...memoDataArr];
-    copyArr.sort((a, b) => {
-      return a.title.toLowerCase().localeCompare(b.title.toLowerCase());
-    });
+    copyArr.sort((a, b) => a.title.toLowerCase().localeCompare(b.title.toLowerCase()));
     setMemoDataArr(copyArr);
   }
 
-  function handleSortByDate() {}
+  function handleSortByDate() {
+    const copyArr = [...memoDataArr];
+    copyArr.sort((a, b) => (a.created_date < b.created_date ? 1 : -1));
+    setMemoDataArr(copyArr);
+  }
 
   return (
     <div className="sort-btn-wrapper">
@@ -22,7 +24,7 @@ export default function SortBtn(props) {
         <button id="sort-title-btn" className="sort-option" onClick={handleSortByTitle}>
           Title
         </button>
-        <button id="sort-date-btn" className="sort-option">
+        <button id="sort-date-btn" className="sort-option" onClick={handleSortByDate}>
           Date Created
         </button>
       </div>

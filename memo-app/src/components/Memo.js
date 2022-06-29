@@ -3,6 +3,7 @@ import { updateMemo, deleteMemo } from "../networking";
 import { useState } from "react";
 const CHAR_WARNING_THRESHOLD = 15;
 const MAX_CHARS_BODY = 140;
+const MAX_CHARS_TITLE = 40;
 const POPUP_TIMEOUT = 1750;
 
 export default function Memo(props) {
@@ -88,6 +89,7 @@ export default function Memo(props) {
         <textarea
           className="title-input"
           id={`title-input-${id}`}
+          maxLength={MAX_CHARS_TITLE}
           placeholder="Memo Title"
           defaultValue={title ? title : ""}
           onBlur={handleUpdateMemo}
@@ -95,7 +97,6 @@ export default function Memo(props) {
         <textarea
           className="body-input"
           id={`body-input-${id}`}
-          type="textarea"
           maxLength={MAX_CHARS_BODY}
           placeholder="notes..."
           defaultValue={body ? body : ""}

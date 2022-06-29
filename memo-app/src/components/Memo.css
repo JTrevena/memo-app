@@ -25,6 +25,7 @@
   animation: fadeIn, fadeOut;
   animation-duration: 1s, 1s;
   animation-delay: 0ms, 1200ms;
+  border-radius: 5px;
 }
 
 @keyframes fadeIn {

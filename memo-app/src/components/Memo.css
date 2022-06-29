@@ -1,5 +1,26 @@
 .memo-tile-wrapper {
   width: 150px;
   margin: 10px;
-  background-color: aliceblue;
+  border: 1px solid black;
+}
+
+textarea {
+  outline: none;
+  padding: none;
+  width: 90%;
+  resize: none;
+  border: none;
+  overflow-y: hidden;
+}
+
+textarea:focus {
+  border: 1px solid grey;
+}
+
+.title-input {
+  font-weight: bold;
+}
+
+.body-input {
+  height: 60px;
 }

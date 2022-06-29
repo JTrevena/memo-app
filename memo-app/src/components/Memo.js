@@ -6,22 +6,19 @@ export default function Memo(props) {
   return (
     <div className="memo-tile-wrapper">
       <div className={`memo-tile-${id}`}>
-        <form>
-          <input
-            className="title-input"
-            id={`title-input-${id}`}
-            type="text"
-            placeholder="Memo Title"
-            defaultValue={title ? title : ""}
-          ></input>
-          <input
-            className="body-input"
-            id={`body-input-${id}`}
-            type="text"
-            placeholder="notes..."
-            defaultValue={body ? body : ""}
-          ></input>
-        </form>
+        <textarea
+          className="title-input"
+          id={`title-input-${id}`}
+          placeholder="Memo Title"
+          defaultValue={title ? title : ""}
+        ></textarea>
+        <textarea
+          className="body-input"
+          id={`body-input-${id}`}
+          type="textarea"
+          placeholder="notes..."
+          defaultValue={body ? body : ""}
+        ></textarea>
       </div>
     </div>
   );

@@ -8,13 +8,15 @@ export default function Memo(props) {
       <div className={`memo-tile-${id}`}>
         <form>
           <input
-            className={`title-input-${id}`}
+            className="title-input"
+            id={`title-input-${id}`}
             type="text"
             placeholder="Memo Title"
             defaultValue={title ? title : ""}
           ></input>
           <input
-            className={`body-input-${id}`}
+            className="body-input"
+            id={`body-input-${id}`}
             type="text"
             placeholder="notes..."
             defaultValue={body ? body : ""}

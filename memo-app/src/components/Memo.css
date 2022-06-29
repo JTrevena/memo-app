@@ -1,5 +1,6 @@
 .memo-tile-wrapper {
   width: 150px;
+  height: 150px;
   margin: 10px;
   border: 1px solid black;
 }
@@ -10,7 +11,6 @@ textarea {
   width: 90%;
   resize: none;
   border: none;
-  overflow-y: hidden;
 }
 
 textarea:focus {
@@ -19,8 +19,9 @@ textarea:focus {
 
 .title-input {
   font-weight: bold;
+  height: 20%;
 }
 
 .body-input {
-  height: 60px;
+  height: 70%;
 }

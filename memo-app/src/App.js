@@ -19,9 +19,23 @@ const exampleMemoTwo = {
 function App() {
   const [memoDataArr, setMemoDataArr] = useState([exampleMemoOne, exampleMemoTwo]);
 
+  function handleRemoveMemoFromArr(id) {
+    console.log(id);
+    let indexToDelete;
+    for (let i = 0; i < memoDataArr.length; i++) {
+      if (memoDataArr[i].id === id) {
+        indexToDelete = i;
+        break;
+      }
+    }
+    let newMemoDataArr = [...memoDataArr];
+    newMemoDataArr.splice(indexToDelete, 1);
+    setMemoDataArr(newMemoDataArr);
+  }
+
   function renderMemos() {
     return memoDataArr.map(memo => {
-      return <Memo className={`memo-${memo.id}`} key={memo.id} memoData={memo} />;
+      return <Memo className={`memo-${memo.id}`} key={memo.id} memoData={memo} removeMemo={handleRemoveMemoFromArr} />;
     });
   }
 

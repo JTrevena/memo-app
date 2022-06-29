@@ -2,6 +2,7 @@ import "./App.css";
 import React, { useState } from "react";
 import Memo from "./components/Memo.js";
 import NewMemoBtn from "./components/NewMemoBtn";
+import SortBtn from "./components/SortBtn";
 
 const exampleMemoOne = {
   id: 1,
@@ -35,14 +36,27 @@ function App() {
 
   function renderMemos() {
     return memoDataArr.map(memo => {
-      return <Memo className={`memo-${memo.id}`} key={memo.id} memoData={memo} removeMemo={handleRemoveMemoFromArr} />;
+      return (
+        <Memo
+          className={`memo-${memo.id}`}
+          key={memo.id}
+          memoDataArr={memoDataArr}
+          setMemoDataArr={setMemoDataArr}
+          memoData={memo}
+          removeMemo={handleRemoveMemoFromArr}
+        />
+      );
     });
   }
 
   return (
     <div className="App">
+      <h1>Memo Board</h1>
       <div className="new-memo-btn-wrapper">
-        <NewMemoBtn memoDataArr={memoDataArr} setMemoDataArr={setMemoDataArr}></NewMemoBtn>
+        <NewMemoBtn memoDataArr={memoDataArr} setMemoDataArr={setMemoDataArr} />
+      </div>
+      <div className="sort-btn-wrapper">
+        <SortBtn memoDataArr={memoDataArr} setMemoDataArr={setMemoDataArr} />
       </div>
       <div className="memos-wrapper">{renderMemos()}</div>
     </div>

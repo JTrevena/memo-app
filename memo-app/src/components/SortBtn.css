@@ -1,0 +1,13 @@
+.sort-btn-wrapper {
+  position: relative;
+  display: inline-block;
+}
+
+.sort-options-wrapper {
+  display: none;
+  position: absolute;
+}
+
+.sort-btn-wrapper:hover .sort-options-wrapper {
+  display: block;
+}

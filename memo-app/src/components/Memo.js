@@ -6,26 +6,59 @@ export default function Memo(props) {
   const { id, created_date, title, body } = props.memoData;
   const [showDelete, setShowDelete] = useState(false);
 
+  function updateLocalMemoData(section, text) {
+    const copyArr = [...props.memoDataArr];
+    let indexToUpdate;
+    for (let i = 0; i < copyArr.length; i++) {
+      const currentMemo = copyArr[i];
+      if (currentMemo.id === id) {
+        indexToUpdate = i;
+        break;
+      }
+    }
+
+    if (section === "title") {
+      copyArr[indexToUpdate].title = text;
+    } else if (section === "body") {
+      copyArr[indexToUpdate].body = text;
+    }
+
+    props.setMemoDataArr(copyArr);
+  }
+
   async function handleUpdateMemo(e) {
     const text = e.target.value;
     const memoInfo = { id: id };
-    if (e.target.className === "title-input") memoInfo.title = text;
-    else if (e.target.className === "body-input") memoInfo.body = text;
 
-    const updated = await updateMemo(memoInfo);
+    if (e.target.className === "title-input") {
+      memoInfo.title = text;
+      updateLocalMemoData("title", text);
+    } else if (e.target.className === "body-input") {
+      memoInfo.body = text;
+      updateLocalMemoData("body", text);
+    }
 
-    if (updated) {
-      // TODO: notification to let user know the memo has been updated
-    } else {
-      throw new Error("Failed to update! Check HTTP response.");
+    try {
+      const updated = await updateMemo(memoInfo);
+      if (updated) {
+        // TODO: notification to let user know the memo has been updated
+      } else {
+        throw new Error("Failed to update! Check HTTP response.");
+      }
+    } catch (err) {
+      console.log(err);
     }
   }
 
   async function handleDeleteMemo() {
-    props.removeMemo(id);
+    try {
+      const deleted = await deleteMemo(id);
+      if (!deleted) throw new Error("Failed to delete! Check HTTP response.");
+    } catch (err) {
+      console.log(err);
+    }
 
-    const deleted = await deleteMemo(id);
-    if (!deleted) throw new Error("Failed to delete! Check HTTP response.");
+    props.removeMemo(id);
   }
 
   function handleShowDeleteBtn() {

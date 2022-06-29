@@ -7,3 +7,10 @@
   flex-wrap: wrap;
   width: 95%;
 }
+
+.btns-wrapper {
+  display: flex;
+  flex: 1;
+  margin: 3%;
+  justify-content: center;
+}

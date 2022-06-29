@@ -1,6 +1,13 @@
 .sort-btn-wrapper {
   position: relative;
   display: inline-block;
+  align-items: center;
+  margin: 1%;
+}
+
+.sort-btn {
+  width: max-content;
+  height: fit-content;
 }
 
 .sort-options-wrapper {

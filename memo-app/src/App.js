@@ -45,11 +45,13 @@ function App() {
   return (
     <div className="App">
       <h1>Memo Board</h1>
-      <div className="new-memo-btn-wrapper">
-        <NewMemoBtn memoDataArr={memoDataArr} setMemoDataArr={setMemoDataArr} />
-      </div>
-      <div className="sort-btn-wrapper">
-        <SortBtn memoDataArr={memoDataArr} setMemoDataArr={setMemoDataArr} />
+      <div className="btns-wrapper">
+        <div className="new-memo-btn-wrapper">
+          <NewMemoBtn memoDataArr={memoDataArr} setMemoDataArr={setMemoDataArr} />
+        </div>
+        <div className="sort-btn-wrapper">
+          <SortBtn memoDataArr={memoDataArr} setMemoDataArr={setMemoDataArr} />
+        </div>
       </div>
       <div className="memos-wrapper">{renderMemos()}</div>
     </div>

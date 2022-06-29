@@ -1,3 +1,4 @@
+import "./NewMemoBtn.css";
 import { useState, useEffect } from "react";
 import { postNewMemo } from "../networking";
 

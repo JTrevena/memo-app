@@ -11,7 +11,11 @@ export default function SortBtn(props) {
 
   function handleSortByDate() {
     const copyArr = [...memoDataArr];
-    copyArr.sort((a, b) => (a.created_date < b.created_date ? 1 : -1));
+    copyArr.sort((a, b) => {
+      const dateStrA = new Date(a.created_date).toISOString();
+      const dateStrB = new Date(b.created_date).toISOString();
+      return dateStrA.localeCompare(dateStrB);
+    });
     setMemoDataArr(copyArr);
   }
 
@@ -22,10 +26,10 @@ export default function SortBtn(props) {
       </button>
       <div className="sort-options-wrapper">
         <button id="sort-title-btn" className="sort-option" onClick={handleSortByTitle}>
-          Title
+          Title (Alphabetically)
         </button>
         <button id="sort-date-btn" className="sort-option" onClick={handleSortByDate}>
-          Date Created
+          Date Created (Oldest first)
         </button>
       </div>
     </div>

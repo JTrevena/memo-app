@@ -3,6 +3,7 @@ import { updateMemo, deleteMemo } from "../networking";
 import { useState } from "react";
 const CHAR_WARNING_THRESHOLD = 15;
 const MAX_CHARS_BODY = 140;
+const POPUP_TIMEOUT = 1750;
 
 export default function Memo(props) {
   const { id, title, body } = props.memoData;
@@ -44,14 +45,11 @@ export default function Memo(props) {
 
     try {
       const updated = await updateMemo(memoInfo);
-      if (updated) {
-        // TODO: notification to let user know the memo has been updated
-      } else {
-        throw new Error("Failed to update! Check HTTP response.");
-      }
+      if (!updated) throw new Error("Failed to update! Check HTTP response.");
     } catch (err) {
       console.log(err);
     }
+    handleShowUpdatedPopup();
   }
 
   async function handleDeleteMemo() {
@@ -71,6 +69,12 @@ export default function Memo(props) {
 
   function handleHideDeleteBtn() {
     setShowDelete(false);
+  }
+
+  function handleShowUpdatedPopup() {
+    const popup = document.getElementById(`updated-popup-${id}`);
+    popup.classList.add("show");
+    setTimeout(() => popup.classList.remove("show"), POPUP_TIMEOUT);
   }
 
   return (
@@ -112,6 +116,11 @@ export default function Memo(props) {
             Delete Memo...
           </button>
         )}
+      </div>
+      <div className="updated-popup">
+        <span id={`updated-popup-${id}`} className="updated-popup">
+          Updated!
+        </span>
       </div>
     </div>
   );

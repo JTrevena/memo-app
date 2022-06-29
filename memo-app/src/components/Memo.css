@@ -13,8 +13,32 @@
   height: 100%;
 }
 
+.updated-popup .updated-popup {
+  visibility: hidden;
+}
+
+.updated-popup .show {
+  visibility: visible;
+  border: 1px solid black;
+  background-color: green;
+  color: white;
+  animation: fadeIn 1s;
+}
+
+@keyframes fadeIn {
+  from {
+    opacity: 0;
+  }
+  to {
+    opacity: 1;
+  }
+}
+
 .delete-btn {
   justify-content: flex-end;
+  background-color: rgb(228, 51, 12);
+  color: white;
+  border-radius: 5px;
 }
 
 .char-limit-warning {

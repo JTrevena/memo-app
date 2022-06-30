@@ -29,6 +29,8 @@ test("sort button renders with options when hovered over", () => {
   expect(dateOption).toBeVisible();
 });
 
+//TODO: Complete below tests
+
 test("A new memo will have its title focused upon", () => {});
 
 test("A memo is no longer displayed after having been deleted", () => {});

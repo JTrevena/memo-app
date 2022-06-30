@@ -48,7 +48,17 @@ test("A memo's delete button will only display when the memo is hovered over", (
   expect(deleteBtn).not.toBeVisible();
 });
 
-test("A character count warning is displayed when the body text approaches the limit", () => {});
+test("A character count warning is displayed when the body text approaches the limit", () => {
+  const mockData = mockMemoDataA;
+  while (mockData.body.length < MAX_CHARS_BODY - CHAR_WARNING_THRESHOLD) {
+    mockData.body += "A";
+  }
+  render(<Memo memoDataArr={mockMemoDataArr} setMemoDataArr={mockSetMemoDataArr} memoData={mockData} />);
+  const charWarning = screen.getByTestId(`char-warning-${mockData.id}`);
+  expect(charWarning).toBeVisible();
+});
+
+//TODO: Complete below tests
 
 test("Blurring a text field triggers a request to update the memo array", () => {});
 

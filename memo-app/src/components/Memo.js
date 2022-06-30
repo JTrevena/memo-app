@@ -101,6 +101,7 @@ export function Memo(props) {
         <textarea
           className="body-input"
           id={`body-input-${id}`}
+          data-testid={`body-input-${id}`}
           maxLength={MAX_CHARS_BODY}
           placeholder={BODY_PLACEHOLDER_TEXT}
           defaultValue={body ? body : ""}
@@ -112,7 +113,7 @@ export function Memo(props) {
           onBlur={handleUpdateMemo}
         ></textarea>
         {showCharWarning && (
-          <span className="char-limit-warning">
+          <span className="char-limit-warning" data-testid={`char-warning-${id}`}>
             {numCharsUsed} / {MAX_CHARS_BODY}
           </span>
         )}

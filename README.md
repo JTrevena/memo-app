@@ -2,7 +2,10 @@
 
 ### This simple app is a place to jot down your thoughts and ideas on memo pads
 
+![screenshot-of-memo-app](https://github.com/JTrevena/memo-app/readme-res/memo-app-screenshot.png?raw=true)
+
 ##
+
 ##
 
 ## Features
@@ -14,6 +17,7 @@
 - Memo pads can be sorted by their titles or by their date of creation
 
 ##
+
 ##
 
 ## Use and Testing
@@ -24,6 +28,7 @@ This app is currently not being hosted. You can run and test it locally by downl
 - To test: npm test
 
 ##
+
 ##
 
 ## Dependencies

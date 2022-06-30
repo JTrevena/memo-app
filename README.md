@@ -2,7 +2,7 @@
 
 ### This simple app is a place to jot down your thoughts and ideas on memo pads
 
-![screenshot-of-memo-app](https://github.com/JTrevena/memo-app/readme-res/memo-app-screenshot.png?raw=true)
+![screenshot-of-memo-app](https://github.com/JTrevena/memo-app/blob/main/readme-res/memo-app-screenshot.png?raw=true)
 
 ##
 
